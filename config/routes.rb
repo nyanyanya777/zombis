@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   resources :blogs, only:[:index, :create, :show,
   :edit, :destroy]
   root 'blogs#index'
+  if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
