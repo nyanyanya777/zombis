@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.create(blogs_params)
-    redirect_to blogs_pat
+    redirect_to blogs_path
   end
 
   def edit
