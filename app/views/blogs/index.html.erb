@@ -1,30 +1,4 @@
 
-<section class="main-header">
-  <p class="flash"><%= notice %><%= alert %></p>
-</section>
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">
-				タイトル
-			</a>
-		</div>
-
-		<div class="collapse navbar-collapse" id="navbarEexample7">
-			<ul class="nav navbar-nav">
-				<li><a href="#">メニューＡ</a></li>
-				<li class="active"><a href="#">メニューＢ</a></li>
-				<li><a href="#">メニューＣ</a></li>
-			</ul>
-			<p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
-		</div>
-	</div>
-</nav>
 <div class="container-fluid">
   <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 <%= form_for(@blog) do |f| %>
@@ -36,6 +10,8 @@
 <% end %>
 </div>
 <% @blogs.each do |blog| %>
+<%= profile_img(blog.user) %>
+<%= blog.user.name %>
 <p><%= blog.content %></p>
 <P><%= image_tag(blog.image) %></p>
 <% end %>
