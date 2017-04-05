@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+
+<h1>避難所</h1>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers([
+      {
+        "lat": 35.658689,
+        "lng": 139.697798,
+        "infowindow": "テックキャンプ渋谷オフィス"
+      }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(16);
+  });
+</script>
+
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td>地名<%= place.name %></td>
+        <td><%= place.description %></td>
+        <td><%= place.latitude%></td>
+        <td><%= place.longitude %></td>
+        <td><%= link_to 'Show', place %></td>
+        <td><%= link_to 'Edit', edit_place_path(place) %></td>
+        <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+<%= link_to 'New Place', new_place_path %>
+</div>
+</div>
